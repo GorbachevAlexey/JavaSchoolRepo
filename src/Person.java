@@ -18,14 +18,16 @@ public class Person {
     public boolean marry(Person person) {
         if (this.man != person.man) {
             if ((this.spouse != null) || (person.spouse != null)) {
-                this.divorce();
-                person.divorce();
-                if (person.spouse!=null){
-                    person.spouse.divorce();
-                }
                 if (this.spouse!=null){
                     this.spouse.divorce();
                 }
+                this.divorce();
+                if (person.spouse!=null){
+                    person.spouse.divorce();
+                }
+                person.divorce();
+
+
             }
             this.spouse = person;
             person.spouse = this;

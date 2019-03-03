@@ -5,12 +5,15 @@ public class Solution {
         Person person = new Person(true, "Bob");
         Person person1 = new Person(false,"Sara");
         Person person2 = new Person(false,"Maria");
+        Person person3 = new Person(true,"Djeck");
 
 
-        person.marry(person1);
-        person.marry(person2);
-        person.marry(person);
+        person.marry(person1);// bob sara
+        person.marry(person2);//bob maria
+        person.marry(person3);//bob djeck
+        person1.marry(person3);//sara djeck
+        person.marry(person1);//bob sara
 
-        System.out.println(person);
+
     }
 }
