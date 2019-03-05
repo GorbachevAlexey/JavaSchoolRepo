@@ -1,18 +1,21 @@
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.*;
 
 public class Solution {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        String fileName = "src//input1.txt";
+        String content = Files.lines(Paths.get(fileName)).reduce("",(a,b) -> a + " " + b);
+        System.out.println(content);
+        List<String> list = new ArrayList<String>(Arrays.asList(content.split(" ")));
 
-        Person person = new Person(true, "Bob");
-        Person person1 = new Person(false,"Sara");
-        Person person2 = new Person(false,"Maria");
-        Person person3 = new Person(true,"Djeck");
+        for (String str:list) {
+            int count = Collections.frequency(list, str);
+            System.out.println(count);
+        }
 
-
-        person.marry(person1);// bob sara
-        person.marry(person2);//bob maria
-        person.marry(person3);//bob djeck
-        person1.marry(person3);//sara djeck
-        person.marry(person1);//bob sara
+//
 
 
     }
