@@ -1,3 +1,5 @@
+package com.sbt.lesson2;
+
 public class Person {
     private final boolean man;
     private final String name;
