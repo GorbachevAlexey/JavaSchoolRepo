@@ -8,6 +8,8 @@ public class Solution {
         while (scanner.hasNext()) {
             str = str + scanner.nextLine() + " ";
         }
+        str = str.toLowerCase().replaceAll("\\s+", " ");
+
         List<String> list = new ArrayList<>(Arrays.asList(str.split(" ")));
         Map<String, Integer> map = new HashMap<>();
 
@@ -35,26 +37,7 @@ public class Solution {
             }
         }
         Collections.sort(output);
-        for (String out : output) {
-            System.out.println(out);
-        }
+        for (String out : output) System.out.println(out);
 
     }
 }
-/*
-String fileName = "src//input1.txt";
-String content = Files.lines(Paths.get(fileName)).reduce("",(a,b) -> a + " " + b);
-System.out.println(content);
-List<String> list = new ArrayList<String>(Arrays.asList(content.split(" ")));
-
-for (String str:list) {
-int count = Collections.frequency(list, str);
-System.out.println(count);
-}
-*/
-/*
-for (String myStr:list) {
-int count = Collections.frequency(list, myStr);
-System.out.println(count);
-}
-*/
