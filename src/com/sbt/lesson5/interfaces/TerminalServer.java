@@ -6,6 +6,6 @@ import com.sbt.lesson5.exeptionClasses.NotEnoughMoneyExeption;
 
 public interface TerminalServer {
     int checkedBalance() throws FailedConnectionExeption;
-    void getMoney(int value) throws FailedConnectionExeption, NotEnoughMoneyExeption, InvalidSumExeption;
-    void setMoney(int value) throws FailedConnectionExeption;
+    boolean getMoney(int value) throws FailedConnectionExeption, NotEnoughMoneyExeption, InvalidSumExeption;
+    boolean setMoney(int value) throws FailedConnectionExeption, InvalidSumExeption;
 }
