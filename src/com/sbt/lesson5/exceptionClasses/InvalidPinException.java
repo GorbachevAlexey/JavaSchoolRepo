@@ -1,4 +1,4 @@
-package com.sbt.lesson5.exeptionClasses;
+package com.sbt.lesson5.exceptionClasses;
 
 public class InvalidPinException extends Throwable {
     private int remainingCountToGO;

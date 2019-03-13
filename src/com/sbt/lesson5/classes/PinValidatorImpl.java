@@ -1,7 +1,7 @@
 package com.sbt.lesson5.classes;
 
-import com.sbt.lesson5.exeptionClasses.AccountIsLockedException;
-import com.sbt.lesson5.exeptionClasses.InvalidPinException;
+import com.sbt.lesson5.exceptionClasses.AccountIsLockedException;
+import com.sbt.lesson5.exceptionClasses.InvalidPinException;
 import com.sbt.lesson5.interfaces.PinValidator;
 
 import java.util.Date;

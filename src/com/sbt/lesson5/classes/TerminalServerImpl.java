@@ -1,7 +1,7 @@
 package com.sbt.lesson5.classes;
 
-import com.sbt.lesson5.exeptionClasses.FailedConnectionException;
-import com.sbt.lesson5.exeptionClasses.NotEnoughMoneyException;
+import com.sbt.lesson5.exceptionClasses.FailedConnectionException;
+import com.sbt.lesson5.exceptionClasses.NotEnoughMoneyException;
 import com.sbt.lesson5.interfaces.TerminalServer;
 
 import java.util.Random;

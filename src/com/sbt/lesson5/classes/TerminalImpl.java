@@ -1,6 +1,6 @@
 package com.sbt.lesson5.classes;
 
-import com.sbt.lesson5.exeptionClasses.*;
+import com.sbt.lesson5.exceptionClasses.*;
 import com.sbt.lesson5.interfaces.PinValidator;
 import com.sbt.lesson5.interfaces.Terminal;
 import com.sbt.lesson5.interfaces.TerminalServer;

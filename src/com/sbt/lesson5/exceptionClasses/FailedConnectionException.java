@@ -1,4 +1,4 @@
-package com.sbt.lesson5.exeptionClasses;
+package com.sbt.lesson5.exceptionClasses;
 
 public class FailedConnectionException extends Throwable {
     public FailedConnectionException() {

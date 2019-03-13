@@ -1,4 +1,4 @@
-package com.sbt.lesson5.exeptionClasses;
+package com.sbt.lesson5.exceptionClasses;
 
 public class NotEnoughMoneyException extends Throwable {
     public NotEnoughMoneyException() {

@@ -1,6 +1,6 @@
 package com.sbt.lesson5.interfaces;
 
-import com.sbt.lesson5.exeptionClasses.*;
+import com.sbt.lesson5.exceptionClasses.*;
 
 public interface Terminal {
     int checkBalance() throws NotValidatePinException, FailedConnectionException;
