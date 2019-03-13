@@ -24,7 +24,7 @@ public class PinValidatorImpl implements PinValidator {
     @Override
     public boolean pinValidate(String pin) throws InvalidPinException, AccountIsLockedException {
         int timeRemaining;
-        if (locked && ((new Date().getTime() - lastDateInvalidToGO.getTime()) / 1000) < PENALTY_SEC) {
+        if (locked && ((new Date().getTime() - lastDateInvalidToGO.getTime()) / 1000) <= PENALTY_SEC) {
             timeRemaining = PENALTY_SEC - (int) ((new Date().getTime() - lastDateInvalidToGO.getTime()) / 1000);
             throw new AccountIsLockedException(timeRemaining);
         }
@@ -41,7 +41,9 @@ public class PinValidatorImpl implements PinValidator {
                 timeRemaining = PENALTY_SEC - (int) ((new Date().getTime() - lastDateInvalidToGO.getTime()) / 1000);
                 throw new AccountIsLockedException(timeRemaining);
             }
-            throw new InvalidPinException();
+            int remainingAttemps = MAX_COUNT_TO_GO - countToGo;
+            if(remainingAttemps < 0) remainingAttemps = 0;
+            throw new InvalidPinException(remainingAttemps);
         }
     }
 }
