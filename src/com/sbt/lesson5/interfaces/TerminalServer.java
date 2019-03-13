@@ -1,11 +1,12 @@
 package com.sbt.lesson5.interfaces;
 
-import com.sbt.lesson5.exeptionClasses.FailedConnectionExeption;
-import com.sbt.lesson5.exeptionClasses.InvalidSumExeption;
-import com.sbt.lesson5.exeptionClasses.NotEnoughMoneyExeption;
+import com.sbt.lesson5.exeptionClasses.FailedConnectionException;
+import com.sbt.lesson5.exeptionClasses.NotEnoughMoneyException;
 
 public interface TerminalServer {
-    int checkedBalance() throws FailedConnectionExeption;
-    boolean getMoney(int value) throws FailedConnectionExeption, NotEnoughMoneyExeption, InvalidSumExeption;
-    boolean setMoney(int value) throws FailedConnectionExeption, InvalidSumExeption;
+    int checkedBalance() throws FailedConnectionException;
+
+    void getMoney(int value) throws FailedConnectionException, NotEnoughMoneyException;
+
+    void setMoney(int value) throws FailedConnectionException;
 }

@@ -1,12 +1,47 @@
 package com.sbt.lesson5.classes;
 
 import com.sbt.lesson5.exeptionClasses.AccountIsLockedException;
-import com.sbt.lesson5.exeptionClasses.InvalidPinExeption;
+import com.sbt.lesson5.exeptionClasses.InvalidPinException;
 import com.sbt.lesson5.interfaces.PinValidator;
 
+import java.util.Date;
+
 public class PinValidatorImpl implements PinValidator {
+    private static final int MAX_COUNT_TO_GO = 3;
+    private static final int PENALTY_SEC = 5;
+
+    private String pin;
+    private boolean locked;
+    private int countToGo;
+    private Date lastDateInvalidToGO;
+
+    public PinValidatorImpl(String pin) {
+        this.pin = pin;
+        this.locked = false;
+        this.countToGo = 0;
+    }
+
     @Override
-    public boolean pinValidate(int pin) throws InvalidPinExeption, AccountIsLockedException {
-        return false;
+    public boolean pinValidate(String pin) throws InvalidPinException, AccountIsLockedException {
+        int timeRemaining;
+        if (locked && ((new Date().getTime() - lastDateInvalidToGO.getTime()) / 1000) < PENALTY_SEC) {
+            timeRemaining = PENALTY_SEC - (int) ((new Date().getTime() - lastDateInvalidToGO.getTime()) / 1000);
+            throw new AccountIsLockedException(timeRemaining);
+        }
+
+        if (pin.equals(this.pin)) {
+            countToGo = 0;
+            locked = false;
+            return true;
+        } else {
+            countToGo++;
+            lastDateInvalidToGO = new Date();
+            if (countToGo >= MAX_COUNT_TO_GO) {
+                locked = true;
+                timeRemaining = PENALTY_SEC - (int) ((new Date().getTime() - lastDateInvalidToGO.getTime()) / 1000);
+                throw new AccountIsLockedException(timeRemaining);
+            }
+            throw new InvalidPinException();
+        }
     }
 }

@@ -1,24 +1,44 @@
 package com.sbt.lesson5.classes;
 
-import com.sbt.lesson5.exeptionClasses.FailedConnectionExeption;
-import com.sbt.lesson5.exeptionClasses.InvalidSumExeption;
-import com.sbt.lesson5.exeptionClasses.NotEnoughMoneyExeption;
+import com.sbt.lesson5.exeptionClasses.FailedConnectionException;
+import com.sbt.lesson5.exeptionClasses.NotEnoughMoneyException;
 import com.sbt.lesson5.interfaces.TerminalServer;
+
+import java.util.Random;
 
 public class TerminalServerImpl implements TerminalServer {
 
-    @Override
-    public int checkedBalance() throws FailedConnectionExeption {
-        return 0;
+    private int balance;
+
+    public TerminalServerImpl(int balance) {
+        this.balance = balance;
     }
 
     @Override
-    public boolean getMoney(int value) throws FailedConnectionExeption, NotEnoughMoneyExeption, InvalidSumExeption {
-        return true;
+    public int checkedBalance() throws FailedConnectionException {
+        if (2 == (new Random().nextInt() % 10)) {    // генерируем случайный обрыв связи
+            throw new FailedConnectionException();
+        }
+        return balance;
     }
 
     @Override
-    public boolean setMoney(int value) throws FailedConnectionExeption, InvalidSumExeption {
-        return true;
+    public void getMoney(int value) throws FailedConnectionException, NotEnoughMoneyException {
+        if (2 == (new Random().nextInt() % 10)) {    // генерируем случайный обрыв связи
+            throw new FailedConnectionException();
+        }
+        if (balance < value) {
+            throw new NotEnoughMoneyException();
+        } else {
+            balance -= value;
+        }
+    }
+
+    @Override
+    public void setMoney(int value) throws FailedConnectionException {
+        if (2 == (new Random().nextInt() % 10)) {    // генерируем случайный обрыв связи
+            throw new FailedConnectionException();
+        }
+        balance += value;
     }
 }

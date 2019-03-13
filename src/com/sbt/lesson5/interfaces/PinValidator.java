@@ -1,8 +1,8 @@
 package com.sbt.lesson5.interfaces;
 
 import com.sbt.lesson5.exeptionClasses.AccountIsLockedException;
-import com.sbt.lesson5.exeptionClasses.InvalidPinExeption;
+import com.sbt.lesson5.exeptionClasses.InvalidPinException;
 
 public interface PinValidator {
-    boolean pinValidate(int pin) throws InvalidPinExeption, AccountIsLockedException;
+    boolean pinValidate(String pin) throws InvalidPinException, AccountIsLockedException;
 }

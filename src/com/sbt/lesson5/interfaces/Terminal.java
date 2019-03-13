@@ -1,5 +1,15 @@
 package com.sbt.lesson5.interfaces;
 
-public interface Terminal {
+import com.sbt.lesson5.exeptionClasses.*;
 
+public interface Terminal {
+    int checkBalance() throws NotValidatePinException, FailedConnectionException;
+
+    void setMoney(int value) throws NotValidatePinException, InvalidSumException, FailedConnectionException;
+
+    void getMoney(int value) throws NotValidatePinException, InvalidSumException, NotEnoughMoneyException, FailedConnectionException;
+
+    void validatePin(String pin) throws InvalidPinException, AccountIsLockedException;
+
+    boolean isPinValidated();
 }
