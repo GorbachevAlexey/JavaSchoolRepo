@@ -22,10 +22,10 @@ public class Main {
 
         while (true) {
             System.out.println("Enter the command:\n" +
-                    "\"1\" - to display balance\n" +
-                    "\"2\" - to set money\n" +
-                    "\"3\" - to get money\n" +
-                    "\"4\" - to exit");
+                    "1 - to display balance\n" +
+                    "2 - to set money\n" +
+                    "3 - to get money\n" +
+                    "4 - to exit");
 
             String command = "";
             command = scanner.next();
@@ -51,13 +51,13 @@ public class Main {
                 break;
             case "2":
                 if (sum == NO_CACHED_SUM) {
-                    System.out.println("Adding money. Enter sum:");
+                    System.out.println("Enter sum:");
                     sum = scanner.nextInt();
                 }
 
                 try {
                     terminal.setMoney(sum);
-                    System.out.println("Adding money. Success!\n");
+                    System.out.println("Success!\n");
                 } catch (NotValidatePinException e) {
                     validate(scanner, terminal);
                     executeCommand(command, terminal, scanner, sum);
@@ -69,13 +69,13 @@ public class Main {
                 break;
             case "3":
                 if (sum == NO_CACHED_SUM) {
-                    System.out.println("Getting money. Enter sum:");
+                    System.out.println("Enter sum:");
                     sum = scanner.nextInt();
                 }
 
                 try {
                     terminal.getMoney(sum);
-                    System.out.println("Getting money. Success!\n");
+                    System.out.println("Success!\n");
                 } catch (NotValidatePinException e) {
                     validate(scanner, terminal);
                     executeCommand(command, terminal, scanner, sum);
