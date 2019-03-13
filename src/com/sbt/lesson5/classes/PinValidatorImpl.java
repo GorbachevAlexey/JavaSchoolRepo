@@ -26,7 +26,7 @@ public class PinValidatorImpl implements PinValidator {
         int timeRemaining;
         if (locked && ((new Date().getTime() - lastDateInvalidToGO.getTime()) / 1000) <= PENALTY_SEC) {
             timeRemaining = PENALTY_SEC - (int) ((new Date().getTime() - lastDateInvalidToGO.getTime()) / 1000);
-            throw new AccountIsLockedException(timeRemaining);
+            throw new AccountIsLockedException("Error: Your card is locked for seconds ", timeRemaining);
         }
 
         if (pin.equals(this.pin)) {
@@ -39,11 +39,11 @@ public class PinValidatorImpl implements PinValidator {
             if (countToGo >= MAX_COUNT_TO_GO) {
                 locked = true;
                 timeRemaining = PENALTY_SEC - (int) ((new Date().getTime() - lastDateInvalidToGO.getTime()) / 1000);
-                throw new AccountIsLockedException(timeRemaining);
+                throw new AccountIsLockedException("Error: Your card is locked for seconds ", timeRemaining);
             }
             int remainingAttemps = MAX_COUNT_TO_GO - countToGo;
-            if(remainingAttemps < 0) remainingAttemps = 0;
-            throw new InvalidPinException(remainingAttemps);
+            if (remainingAttemps < 0) remainingAttemps = 0;
+            throw new InvalidPinException("Error: Invalid PIN code. Remaining attempts: ",remainingAttemps);
         }
     }
 }

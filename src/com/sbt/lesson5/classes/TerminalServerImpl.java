@@ -17,7 +17,7 @@ public class TerminalServerImpl implements TerminalServer {
     @Override
     public int checkedBalance() throws FailedConnectionException {
         if (2 == (new Random().nextInt() % 10)) {    // генерируем случайный обрыв связи
-            throw new FailedConnectionException();
+            throw new FailedConnectionException("Error: Connection is lost, try later");
         }
         return balance;
     }
@@ -25,10 +25,10 @@ public class TerminalServerImpl implements TerminalServer {
     @Override
     public void getMoney(int value) throws FailedConnectionException, NotEnoughMoneyException {
         if (2 == (new Random().nextInt() % 10)) {    // генерируем случайный обрыв связи
-            throw new FailedConnectionException();
+            throw new FailedConnectionException("Error: Connection is lost, try later");
         }
         if (balance < value) {
-            throw new NotEnoughMoneyException();
+            throw new NotEnoughMoneyException("Error: You have not enough money.");
         } else {
             balance -= value;
         }
@@ -37,7 +37,7 @@ public class TerminalServerImpl implements TerminalServer {
     @Override
     public void setMoney(int value) throws FailedConnectionException {
         if (2 == (new Random().nextInt() % 10)) {    // генерируем случайный обрыв связи
-            throw new FailedConnectionException();
+            throw new FailedConnectionException("Error: Connection is lost, try later");
         }
         balance += value;
     }

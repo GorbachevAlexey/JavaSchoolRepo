@@ -19,7 +19,7 @@ public class TerminalImpl implements Terminal {
     @Override
     public int checkBalance() throws NotValidatePinException, FailedConnectionException {
         if (!pinValidated) {
-            throw new NotValidatePinException();
+            throw new NotValidatePinException("Error: no PIN code entered!\n");
         }
         return terminalServer.checkedBalance();
     }
@@ -27,9 +27,9 @@ public class TerminalImpl implements Terminal {
     @Override
     public void setMoney(int value) throws NotValidatePinException, InvalidSumException, FailedConnectionException {
         if (!pinValidated) {
-            throw new NotValidatePinException();
+            throw new NotValidatePinException("Error: no PIN code entered!\n");
         } else if ((0 != value % 100) || (value <= 0)) {
-            throw new InvalidSumException();
+            throw new InvalidSumException("Error: Expected sum, which is multiple to 100 and is more than 0.");
         } else {
             terminalServer.setMoney(value);
         }
@@ -38,9 +38,9 @@ public class TerminalImpl implements Terminal {
     @Override
     public void getMoney(int value) throws NotValidatePinException, InvalidSumException, NotEnoughMoneyException, FailedConnectionException {
         if (!pinValidated) {
-            throw new NotValidatePinException();
+            throw new NotValidatePinException("Error: no PIN code entered!\n");
         } else if ((0 != value % 100) || (value <= 0)) {
-            throw new InvalidSumException();
+            throw new InvalidSumException("Error: Expected sum, which is multiple to 100 and is more than 0.");
         } else {
             terminalServer.getMoney(value);
         }
