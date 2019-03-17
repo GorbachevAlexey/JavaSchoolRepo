@@ -5,7 +5,7 @@ public class Month {
     public String nameMonth;
 
     public Month() {
-        weekNumber =1;
+        weekNumber = 1;
         nameMonth = "March";
     }
 
@@ -14,10 +14,11 @@ public class Month {
         this.nameMonth = nameMonth;
     }
 
-    private int getWeekNumber(){
+    private int getWeekNumber() {
         return weekNumber;
     }
-    public void printSomething(String str){
+
+    public void printSomething(String str) {
         System.out.println(str);
     }
 }

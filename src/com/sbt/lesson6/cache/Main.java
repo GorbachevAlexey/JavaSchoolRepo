@@ -13,13 +13,13 @@ public class Main {
                 new MyHandler(new CalculatorImpl(), cache)
         );
 
-        System.out.println("Результат : " + calc.eval("2 2"));
-        System.out.println("Результат : " + calc.eval("2.5 3.5"));
-        System.out.println("Результат : " + calc.eval("3.14 3.14"));
-        System.out.println("Результат : " + calc.eval("3.14 3.14"));
-        System.out.println("Результат : " + calc.eval("2.71828 2.71828"));
-        System.out.println("Результат : " + calc.eval("2 2"));
-        System.out.println("Результат : " + calc.eval("2.71828 2.71828"));
+        System.out.println(calc.eval("2 2"));
+        System.out.println(calc.eval("2.5 3.5"));
+        System.out.println(calc.eval("3.14 3.14"));
+        System.out.println(calc.eval("3.14 3.14"));
+        System.out.println(calc.eval("2.7 2.7"));
+        System.out.println(calc.eval("2 2"));
+        System.out.println(calc.eval("2.7 2.7"));
     }
 }
 
