@@ -26,7 +26,7 @@ public class BeanUtils {
         Class<?> receiver = to.getClass();
 
         Method[] methodsFromSender = sender.getMethods(); // только паблик методы
-        Method[] methodsFromRecevier = receiver.getMethods();
+        Method[] methodsFromReceiver = receiver.getMethods();
 
         // cоздадим листы геттеров и сеттеров
         ArrayList<Method> gettersFromSender = new ArrayList<>();
@@ -39,7 +39,7 @@ public class BeanUtils {
             }
 
         }
-        for (Method method : methodsFromRecevier) {
+        for (Method method : methodsFromReceiver) {
             if (method.getName().substring(0, 3).contains("set")) {
                 settersFromReceiver.add(method);
                 // System.out.println(method.getReturnType()+" "+method.getName());
