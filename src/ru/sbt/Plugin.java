@@ -1,4 +1,4 @@
-package com.sbt.lesson7.pluginmanager;
+package ru.sbt;
 
 public interface Plugin {
     //methods doesn't matter

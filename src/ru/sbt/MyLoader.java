@@ -1,4 +1,4 @@
-package com.sbt.lesson7.pluginmanager;
+package ru.sbt;
 
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -20,8 +20,7 @@ public class MyLoader extends URLClassLoader {
     @Override
     public Class<?> loadClass(String name) throws ClassNotFoundException {
         //Если это плагин - грузим сразу
-        if (name.startsWith("com.plugin"))
-            return this.findClass(name);
+        if (name.startsWith("ru.plugin")) return this.findClass(name);
         //Иначе классически делегируем загрузку родителю
         return super.loadClass(name);
     }
